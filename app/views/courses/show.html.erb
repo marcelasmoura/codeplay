@@ -1,0 +1,11 @@
+<h2><%= @course.name %></h2>
+
+<ul>
+	<li><%= @course.description %></li>
+	<li><%= @course.description%></li>
+	<li><%= @course.code %></li>
+	<li><%= number_to_brl(@course.price) %></li>
+	<li><%= date_to_br(@course.enrollment_deadline) %></li>
+</ul>
+
+<%= link_to("Voltar", courses_path) %>

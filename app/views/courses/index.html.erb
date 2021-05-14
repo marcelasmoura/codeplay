@@ -1,0 +1,16 @@
+<h1>Courses List</h1>
+
+<% if @courses.empty?%>
+	Nenhum curso disponível
+<% end %>
+
+<% @courses.each do |course| %>
+	<h3><%= link_to course.name, course_path(course) %></h3>
+	<ul>
+		<li><%= course.description %></li>
+		<li><%= number_to_brl(course.price) %></li>
+	</ul>
+<% end %>
+
+
+ <%= link_to("Voltar", root_path) %>
