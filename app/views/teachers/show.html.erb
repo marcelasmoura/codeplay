@@ -1,0 +1,15 @@
+<h2><%= @teacher.name %></h2>
+
+<ul>
+	<li><%= @teacher.bio%></li>
+	<li><%= @teacher.email %></li>
+	<% if  @teacher.profile_picture.attached? %>
+	    <li><%= image_tag rails_blob_path(@teacher.profile_picture, only_path: true), class: 'profile-picture' %></li>
+	<% end %>
+</ul>
+
+<%= link_to("Editar", edit_teacher_path) %>
+<br>
+<%= link_to("Voltar", teachers_path) %>
+
+

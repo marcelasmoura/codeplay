@@ -8,10 +8,17 @@ class CoursesController < ApplicationController
 	end
 
 	def create
-		@course = Course.new
+		@course = Course.create(course_params)
+		redirect_to @course
 	end
 
 	def show
 		@course = Course.find(params[:id])
+	end
+
+	private
+
+	def course_params
+		params.require(:course).permit(:name, :description, :code, :price, :enrollment_deadline)
 	end
 end
