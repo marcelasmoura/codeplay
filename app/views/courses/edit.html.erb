@@ -1,3 +1,4 @@
+<h3>Edite o Curso</h3>
 
 <% if @course.errors.any? %>
 <ul>
@@ -18,8 +19,5 @@
 	  <%= f.text_field :price %>
 	<%= f.label :enrollment_deadline, 'Data limite de matrícula' %>
 	 <%= f.text_field :enrollment_deadline %>
-	<%= f.submit 'Criar curso' %>
+	<%= f.submit 'Atualizar dados!' %>
 <% end %>
-
-
-   

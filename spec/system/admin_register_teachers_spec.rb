@@ -65,7 +65,7 @@ describe 'Admin registers teachers' do
                    email: 'abr@email.com',
                    profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
                     filename: 'img.svg'})
-    
+
     visit root_path
     click_on 'Professores'
     click_on 'Registrar um Professor'
@@ -77,5 +77,19 @@ describe 'Admin registers teachers' do
     click_on 'Cadastrar Professor'
 
     expect(page).to have_content('E-mail já cadastrado!')    
+  end
+
+  it 'deletes a teacher' do
+
+    Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
+                   email: 'abr@email.com',
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
+                    filename: 'img.svg'})
+
+    visit root_path
+    click_on 'Professores'
+    click_on 'Amanda'
+    click_on 'Excluir'
+
   end
 end

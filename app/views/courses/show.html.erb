@@ -7,4 +7,8 @@
 	<li><%= date_to_br(@course.enrollment_deadline) %></li>
 </ul>
 
+<%= link_to("Editar", edit_course_path) %>
+<br>
+<%= link_to("Excluir", course_path(@course), method: :delete) %>
+<br>
 <%= link_to("Voltar", courses_path) %>
