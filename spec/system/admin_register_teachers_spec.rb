@@ -91,5 +91,7 @@ describe 'Admin registers teachers' do
     click_on 'Amanda'
     click_on 'Excluir'
 
+    expect(page).to_not have_content('Amanda')
+
   end
 end

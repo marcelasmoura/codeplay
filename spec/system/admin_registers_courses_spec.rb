@@ -66,4 +66,39 @@ describe 'Admin registers courses' do
     expect(page).to have_content('já está em uso')
   end
 
+  it 'edit a course resgister' do
+    visit root_path
+    click_on 'Cursos'
+    click_on 'Registrar um Curso'
+
+    fill_in 'Nome', with: 'p'
+    fill_in 'Código', with: 'PHP10'
+    fill_in 'Descrição', with: 'Do zero ao infinito!'
+    fill_in 'Preço', with: '100'
+    fill_in 'Data limite de matrícula', with: '10/12/2021'
+    click_on 'Criar curso'
+
+    click_on 'Editar'
+
+    fill_in 'Nome', with: 'PHP Bootcamp'
+    click_on 'Atualizar dados'
+
+    expect(page).to have_content('PHP Bootcamp')
+  end
+
+  it 'deletes a course' do
+
+    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                   code: 'RUBYBASIC', price: 10,
+                   enrollment_deadline: '22/12/2033')
+
+    visit root_path
+    click_on 'Cursos'
+    click_on 'Ruby'
+    click_on 'Excluir'
+
+    expect(page).to_not have_content('Ruby')
+
+  end
+
 end
