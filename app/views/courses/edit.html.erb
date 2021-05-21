@@ -9,15 +9,31 @@
 <% end %>
 
 <%= form_for @course do |f| %>
-	<%= f.label :name, 'Nome' %>
-	  <%= f.text_field :name %>
-	<%= f.label :description, 'Descrição' %>
-	  <%= f.text_area :description %>
-	<%= f.label :code, 'Código' %>
-	  <%= f.text_field :code %>
-	<%= f.label :price, 'Preço' %>
-	  <%= f.text_field :price %>
-	<%= f.label :enrollment_deadline, 'Data limite de matrícula' %>
-	 <%= f.text_field :enrollment_deadline %>
-	<%= f.submit 'Atualizar dados!' %>
+  <div class='field-item grid'>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field-item grid text'>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_area :description %>
+  </div>
+  <div class='line'>
+    <div class='field-item line-grid'>
+      <%= f.label :code, 'Código' %>
+      <%= f.text_field :code %>
+    </div>
+    <div class='field-item line-grid'>
+      <%= f.label :price, 'Preço' %>
+      <%= f.text_field :price %>
+    </div>
+    <div class='field-item line-data'>
+      <%= f.label :enrollment_deadline, 'Data limite de matrícula' %>
+      <%= f.text_field :enrollment_deadline %>
+    </div>
+    <div class="field-teacher">
+      <%= f.label :teacher_id, 'Professor Responsável: ' %>
+      <%= f.select :teacher_id, [['Selecione Professor', '']] + Teacher.all.map { |n| [n.name, n.id] } %>
+    </div>
+  </div>
+    <%= f.submit 'Atualizar dados!' %>
 <% end %>

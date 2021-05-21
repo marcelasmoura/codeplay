@@ -1,14 +1,20 @@
 <h2><%= @course.name %></h2>
 
-<ul>
-	<li><%= @course.description%></li>
-	<li><%= @course.code %></li>
-	<li><%= number_to_brl(@course.price) %></li>
-	<li><%= date_to_br(@course.enrollment_deadline) %></li>
-</ul>
+<dl>
+	<dt><h4>Descrição: </dt><dd><%= @course.description%></dd>
+	<dt><h4>Código: </dt><dd><%= @course.code %></dd>
+	<dt><h4>Preço: </dt><dd><%= number_to_brl(@course.price) %></dd>
+	<dt><h4>Data limite de matrícula: </dt><dd><%= date_to_br(@course.enrollment_deadline) %></dd>
+	<dt><h4>Professor Responsável: </dt><dd><%= @course.teacher.name%></dd>
+</dl>
+<dl>
+<dl><%= link_to("Add Aula", new_course_lecture_path(@course)) %></dl>
 
-<%= link_to("Editar", edit_course_path) %>
-<br>
-<%= link_to("Excluir", course_path(@course), method: :delete) %>
-<br>
-<%= link_to("Voltar", courses_path) %>
+<dt><%= link_to("Editar", edit_course_path) %></dt>
+
+<dt><%= link_to("Excluir", course_path(@course), method: :delete) %></dt>
+
+<dt><%= link_to("Voltar", courses_path) %></dt>
+</dl>
+
+<%= render "/lectures/list", lectures: @course.lectures %>

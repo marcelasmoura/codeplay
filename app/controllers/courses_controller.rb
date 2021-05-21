@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
 	      redirect_to @course
 	    else
 	      flash[:alert] = 'Verifique os erros:'
-	      render :new
+	      render :edit
 	    end
 	end
 
@@ -46,6 +46,6 @@ class CoursesController < ApplicationController
 	private
 
 	def course_params
-		params.require(:course).permit(:name, :description, :code, :price, :enrollment_deadline)
+		params.require(:course).permit(:name, :description, :code, :price, :enrollment_deadline, :teacher_id)
 	end
 end

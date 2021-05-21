@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <%= flash[:alert] %>
-    <%= yield %>
+    <div class='container'>
+      <%= flash[:alert] %>
+      <%= yield %>
+    </div>
   </body>
 </html>

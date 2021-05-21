@@ -1,0 +1,10 @@
+<h3><%= @lecture.issue %></h3>
+
+<dl>
+	<dt>Descrição:</dt> <dd><%= @lecture.description %></dd>
+	<dt>Data da Aula:</dt> <dd><%= date_to_br(@lecture.date) %></dd>
+</dl>
+
+<%= link_to 'Editar', edit_course_lecture_path(@course) %>
+<%= link_to 'Excluir', course_lecture_path(@course), method: :delete %>
+<%= link_to 'Voltar', course_path(@course) %>
