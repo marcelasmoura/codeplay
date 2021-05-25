@@ -15,6 +15,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -31,5 +32,10 @@ module Codeplay
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.i18n.default_locale = 'pt-BR'
+
+    config.active_storage.variant_processor = :mini_magick
+    
   end
 end

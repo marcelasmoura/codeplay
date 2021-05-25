@@ -1,6 +1,7 @@
 class Teacher < ApplicationRecord
+	has_many :course, dependent: :restrict_with_error
 	has_one_attached :profile_picture
-	validates :name, :email, presence: {message: 'Você deve informar os campos obrigatórios'}
+	validates :name, :email, presence: true
 
-	validates  :email, uniqueness: {message: 'E-mail já cadastrado!'}
+	validates  :email, uniqueness: true
 end

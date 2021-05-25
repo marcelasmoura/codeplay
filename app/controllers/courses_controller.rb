@@ -9,11 +9,9 @@ class CoursesController < ApplicationController
 
 	def create
 		@course = Course.new(course_params)
-		#redirect_to @course
 		if @course.save
 	      redirect_to @course
 	    else
-	      flash[:alert] = 'Verifique os erros:'
 	      render :new
 	    end
 	end
@@ -32,7 +30,6 @@ class CoursesController < ApplicationController
 		if @course.update(course_params)
 	      redirect_to @course
 	    else
-	      flash[:alert] = 'Verifique os erros:'
 	      render :edit
 	    end
 	end

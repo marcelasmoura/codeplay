@@ -9,11 +9,11 @@
 <% end %>
 
 <%= form_for [@course, @lecture] do |f| %>
-  <%= f.label :issue, 'Assunto:' %>
+  <%= f.label :issue %>
     <%= f.text_field :issue %>
-  <%= f.label :description, 'Descrição:' %>
+  <%= f.label :description %>
     <%= f.text_area :description %>
-  <%= f.label :date, 'Data da Aula:' %>
+  <%= f.label :date %>
     <%= f.date_field :date %>
   <%= f.submit 'Criar' %>
 <% end %>

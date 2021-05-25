@@ -1,14 +1,14 @@
-<h1>Courses List</h1>
+<h1><%= t "courses.title_list" %></h1>
 
 <% if @courses.empty?%>
-	Nenhum curso disponível
+	<%= t 'courses.empty.message' %>
 <% end %>
 
 <% @courses.each do |course| %>
 	<h3><%= link_to course.name, course_path(course) %></h3>
 	<ul>
 		<li><%= course.description %></li>
-		<li><%= number_to_brl(course.price) %></li>
+		<li><%= number_to_currency course.price %></li>
 	</ul>
 <% end %>
 

@@ -16,7 +16,6 @@ class TeachersController < ApplicationController
 		if @teacher.save
 	      redirect_to @teacher
 	    else
-	      flash[:alert] = 'Você deve informar os campos obrigatórios'
 	      render :new
 	    end
 	end
@@ -31,15 +30,17 @@ class TeachersController < ApplicationController
 		if @teacher.update(teacher_params)
 	      redirect_to @teacher
 	    else
-	      flash[:alert] = 'Você deve informar os campos obrigatórios'
 	      render :new
 	    end
 	end
 
 	def destroy
 		@teacher = Teacher.find(params[:id])
-		@teacher.destroy
-		redirect_to teachers_path
+		if @teacher.destroy
+			redirect_to teachers_path
+		else
+			render :show
+		end
 	end
 
 	private

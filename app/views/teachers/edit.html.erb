@@ -9,13 +9,13 @@
 <% end %>
 
 <%= form_for @teacher do |f| %>
-  <%= f.label :name, 'Nome*' %>
+  <%= f.label :name %>
     <%= f.text_field :name %>
-  <%= f.label :email, 'E-mail*' %>
+  <%= f.label :email %>
     <%= f.text_field :email %>
-  <%= f.label :bio, 'Descrição' %>
+  <%= f.label :bio %>
     <%= f.text_area :bio %>
-  <%= f.label :profile_picture, 'Foto do Perfil' %>
+  <%= f.label :profile_picture %>
     <%= f.file_field :profile_picture %>
   <%= f.submit 'Atualizar dados' %>
 <% end %>
