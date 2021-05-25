@@ -6,7 +6,7 @@
     <li><%= teacher.bio %></li>
 
     <% if  teacher.profile_picture.attached? %>
-	    <li><%= image_tag rails_blob_path(teacher.profile_picture, only_path: true), class: 'profile-picture' %></li>
+	    <li><%= image_tag rails_representation_path(teacher.profile_picture.variant(resize_to_limit: [80, 80]).processed, only_path: true), class: 'profile-picture' %></li>
 	<% end %>
 
   </ul>

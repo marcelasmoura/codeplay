@@ -18,6 +18,7 @@ pt-BR:
         date: 'Data da Aula'
         issue: 'Assunto'
         description: 'Descrição'
+        support_material: 'Material de Suporte'
     models:
         lectures:
           one: 'Aula'
