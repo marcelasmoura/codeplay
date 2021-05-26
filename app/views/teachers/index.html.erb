@@ -1,0 +1,19 @@
+<h1><%=  t 'teachers.title_list'%></h1>
+
+<% @teachers.each do |teacher| %>
+  <h3><%= link_to teacher.name, teacher_path(teacher) %></h3>  
+  <ul>
+    <li><%= teacher.bio %></li>
+
+    <% if  teacher.profile_picture.attached? %>
+	    <li><%= image_tag rails_representation_path(teacher.profile_picture.variant(resize_to_limit: [80, 80]).processed, only_path: true), class: 'profile-picture' %></li>
+	<% end %>
+
+  </ul>
+<% end %>
+
+<%= link_to("Voltar", root_path) %>
+<br>
+<%= link_to("Registrar um Professor", new_teacher_path) %>
+
+ 

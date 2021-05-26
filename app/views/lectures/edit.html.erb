@@ -1,0 +1,21 @@
+<h2>Editar Aula</h2>
+
+<% if @lecture.errors.any? %>
+  <ul>
+    <% @lecture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@course, @lecture] do |f| %>
+  <%= f.label :issue %>
+    <%= f.text_field :issue %>
+  <%= f.label :date %>
+    <%= f.date_field :date %>
+  <%= f.label :description %>
+    <%= f.rich_text_area :description, size: '70x30 '%>
+  <%= f.label :support_materials %>
+    <%= f.file_field :support_materials, multiple: true %>
+  <%= f.submit 'Salvar' %>
+<% end %>

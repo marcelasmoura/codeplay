@@ -1,0 +1,19 @@
+pt-BR:
+  courses:
+    title_list: 'Cursos'
+    empty:
+      message: 'Nenhum curso disponível!'
+    destroy:
+      confirm: 'Ao deletar esse curso todas suas aulas serão deletadas. Deseja continuar?'
+
+  teachers:
+    title_list: 'Professores'
+    destroy:
+      confirm: 'Deseja realmente apagar este professor?'
+
+  lectures:
+    title_list: 'Aulas' 
+    empty:
+      message: 'Nenhuma aula disponível!'
+    destroy:
+      confirm: 'Desseja realmente deletar essa aula?'

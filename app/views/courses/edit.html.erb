@@ -1,0 +1,39 @@
+<h3>Edite o Curso</h3>
+
+<% if @course.errors.any? %>
+<ul>
+  <% @course.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @course do |f| %>
+  <div class='field-item grid'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field-item grid text'>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class='line'>
+    <div class='field-item line-grid'>
+      <%= f.label :code %>
+      <%= f.text_field :code %>
+    </div>
+    <div class='field-item line-grid'>
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+    </div>
+    <div class='field-item line-data'>
+      <%= f.label :enrollment_deadline %>
+      <%= f.text_field :enrollment_deadline %>
+    </div>
+    <div class="field-teacher">
+      <%= f.label :teacher_id %>
+      <%= f.select :teacher_id, [['Selecione Professor', '']] + Teacher.all.map { |n| [n.name, n.id] } %>
+    </div>
+  </div>
+    <%= f.submit 'Atualizar dados!' %>
+<% end %>

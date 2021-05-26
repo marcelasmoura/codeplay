@@ -1,0 +1,24 @@
+<h2><%= @course.name %></h2>
+
+<dl>
+	<dt><h4>Descrição: </dt><dd><%= @course.description%></dd>
+	<dt><h4>Código: </dt><dd><%= @course.code %></dd>
+	<dt><h4>Preço: </dt><dd><%= number_to_currency @course.price %></dd>
+	<dt><h4>Data limite de matrícula: </dt><dd><%= l @course.enrollment_deadline %></dd>
+	<dt><h4>Professor Responsável: </dt><dd><%= @course.teacher.name%></dd>
+</dl>
+<dl>
+<dl><%= link_to("Add Aula", new_course_lecture_path(@course)) %></dl>
+
+<dt><%= link_to("Editar", edit_course_path) %></dt>
+
+<dt><%= link_to("Excluir", course_path(@course),  data: {confirm: t('courses.destroy.confirm')} ,method: :delete) %></dt>
+
+<dt><%= link_to("Voltar", courses_path) %></dt>
+</dl>
+
+<%= render "/lectures/list", lectures: @course.lectures %>
+
+<% if @course.lectures.empty?%>
+	<%= t 'lectures.empty.message' %>
+<% end %>

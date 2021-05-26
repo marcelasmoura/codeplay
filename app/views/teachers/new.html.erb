@@ -1,0 +1,24 @@
+<h2>Cadastre um Novo Professor</h2>
+
+<% if @teacher.errors.any? %>
+<ul>
+  <% @teacher.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @teacher do |f| %>
+  <%= f.label :name %>
+    <%= f.text_field :name %>
+  <%= f.label :email %>
+    <%= f.text_field :email %>
+  <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  <%= f.label :profile_picture %>
+    <%= f.file_field :profile_picture %>
+  <%= f.submit 'Cadastrar Professor' %>
+<% end %>
+
+
+<%= link_to 'Voltar', teachers_path %>

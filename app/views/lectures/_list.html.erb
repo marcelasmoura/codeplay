@@ -1,0 +1,8 @@
+<h3>Aulas:</h3>
+
+<% lectures.each do |lecture| %>
+	<h4><%= link_to lecture.issue, course_lecture_path(@course, lecture) %></h4>
+	<ul>
+		<li><%= date_to_br(lecture.date) %></li>
+	</ul>
+<% end %>

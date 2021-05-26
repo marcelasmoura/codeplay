@@ -1,0 +1,21 @@
+<h3>Edite Professor</h3>
+
+<% if @teacher.errors.any? %>
+<ul>
+  <% @teacher.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @teacher do |f| %>
+  <%= f.label :name %>
+    <%= f.text_field :name %>
+  <%= f.label :email %>
+    <%= f.text_field :email %>
+  <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  <%= f.label :profile_picture %>
+    <%= f.file_field :profile_picture %>
+  <%= f.submit 'Atualizar dados' %>
+<% end %>
