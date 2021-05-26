@@ -4,7 +4,7 @@ pt-BR:
       teacher:
         name: 'Nome'
         bio: 'Descrição'
-        profile_picture: 'Foto de Perfil'
+        profile_picture: 'Foto do Perfil'
         email: 'E-mail'
         course: 'curso'
       course: 
@@ -18,7 +18,7 @@ pt-BR:
         date: 'Data da Aula'
         issue: 'Assunto'
         description: 'Descrição'
-        support_material: 'Material de Suporte'
+        support_materials: 'Material de Apoio'
     models:
         lectures:
           one: 'Aula'

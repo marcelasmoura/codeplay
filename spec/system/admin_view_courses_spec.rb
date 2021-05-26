@@ -1,14 +1,22 @@
 require 'rails_helper'
 
 describe 'Admin view courses' do
+
+  let!(:teacher) do
+    Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
+                   email: 'abr@email.com',
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                   filename: 'profile.jpeg'})
+  end
+
   it 'successfully' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
+                   enrollment_deadline: '22/12/2033', teacher: teacher)
     Course.create!(name: 'Ruby on Rails',
                    description: 'Um curso de Ruby on Rails',
                    code: 'RUBYONRAILS', price: 20,
-                   enrollment_deadline: '20/12/2033')
+                   enrollment_deadline: '20/12/2033', teacher: teacher)
 
     visit root_path
     click_on 'Cursos'
@@ -24,11 +32,11 @@ describe 'Admin view courses' do
   it 'and view details' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
+                   enrollment_deadline: '22/12/2033', teacher: teacher)
     Course.create!(name: 'Ruby on Rails',
                    description: 'Um curso de Ruby on Rails',
                    code: 'RUBYONRAILS', price: 20,
-                   enrollment_deadline: '20/12/2033')
+                   enrollment_deadline: '20/12/2033', teacher: teacher)
 
     visit root_path
     click_on 'Cursos'
@@ -51,7 +59,7 @@ describe 'Admin view courses' do
   it 'and return to home page' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
+                   enrollment_deadline: '22/12/2033', teacher: teacher)
 
     visit root_path
     click_on 'Cursos'
@@ -63,7 +71,7 @@ describe 'Admin view courses' do
   it 'and return to promotions page' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
+                   enrollment_deadline: '22/12/2033', teacher: teacher)
 
     visit root_path
     click_on 'Cursos'

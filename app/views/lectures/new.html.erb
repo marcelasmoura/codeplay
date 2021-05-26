@@ -15,7 +15,7 @@
     <%= f.date_field :date %>
   <%= f.label :description %>
     <%= f.rich_text_area :description, size: '70x30 '%>
-  <%= f.label :support_material %>
-    <%= f.file_field :support_material %>
+  <%= f.label :support_materials %>
+    <%= f.file_field :support_materials, multiple: true %>
   <%= f.submit 'Criar' %>
 <% end %>

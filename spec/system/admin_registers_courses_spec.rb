@@ -6,8 +6,8 @@ describe 'Admin registers courses' do
   let!(:teacher) do
     Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
                    email: 'abr@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                   filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                   filename: 'profile.jpeg'})
   end
   it 'from index page' do
     visit root_path
@@ -109,7 +109,10 @@ describe 'Admin registers courses' do
     visit root_path
     click_on 'Cursos'
     click_on 'Ruby'
-    click_on 'Excluir'
+
+    accept_alert do
+      click_on 'Excluir'
+    end
 
     expect(page).to_not have_content('Ruby')
 

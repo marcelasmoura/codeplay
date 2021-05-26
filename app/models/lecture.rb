@@ -3,7 +3,7 @@ class Lecture < ApplicationRecord
 
   validates :issue, :date, presence: true
 
-  has_many_attached :support_material
+  has_many_attached :support_materials
 
   has_rich_text :description
 end

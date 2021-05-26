@@ -11,9 +11,11 @@
 <%= form_for [@course, @lecture] do |f| %>
   <%= f.label :issue %>
     <%= f.text_field :issue %>
-  <%= f.label :description %>
-    <%= f.text_area :description %>
   <%= f.label :date %>
     <%= f.date_field :date %>
+  <%= f.label :description %>
+    <%= f.rich_text_area :description, size: '70x30 '%>
+  <%= f.label :support_materials %>
+    <%= f.file_field :support_materials, multiple: true %>
   <%= f.submit 'Salvar' %>
 <% end %>

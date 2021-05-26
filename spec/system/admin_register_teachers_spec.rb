@@ -14,10 +14,10 @@ describe 'Admin registers teachers' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
 
-    fill_in 'Nome*', with: 'Rafael Silva'
-    fill_in 'E-mail*', with: 'rf@email.com'
+    fill_in 'Nome', with: 'Rafael Silva'
+    fill_in 'E-mail', with: 'rf@email.com'
     fill_in 'Descrição', with: 'Trabalho com ruby a 10 anos.'
-    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'img.svg')
+    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'profile.jpeg')
     click_on 'Cadastrar Professor'
 
     expect(current_path).to eq(teacher_path(Teacher.last))
@@ -33,13 +33,13 @@ describe 'Admin registers teachers' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
 
-    fill_in 'Nome*', with: ''
-    fill_in 'E-mail*', with: 'abr@email.com'
+    fill_in 'Nome', with: ''
+    fill_in 'E-mail', with: 'abr@email.com'
     fill_in 'Descrição', with: 'História'
-    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'img.svg')
+    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'profile.jpeg')
     click_on 'Cadastrar Professor'
 
-    expect(page).to have_content('Você deve informar os campos obrigatórios')
+    expect(page).to have_content('Nome não pode ficar em branco')
   end
 
   it 'edit a teacher resgister' do
@@ -47,15 +47,15 @@ describe 'Admin registers teachers' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
 
-    fill_in 'Nome*', with: 'Abr'
-    fill_in 'E-mail*', with: 'abr@email.com'
+    fill_in 'Nome', with: 'Abr'
+    fill_in 'E-mail', with: 'abr@email.com'
     fill_in 'Descrição', with: 'História'
-    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'img.svg') #rspe de active storage recebendo img
+    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'profile.jpeg') #rspe de active storage recebendo img
     click_on 'Cadastrar Professor'
 
     click_on 'Editar'
 
-    fill_in 'Nome*', with: 'Abraão'
+    fill_in 'Nome', with: 'Abraão'
     click_on 'Atualizar dados'
   end
 
@@ -63,33 +63,36 @@ describe 'Admin registers teachers' do
 
     Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
                    email: 'abr@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'})
 
     visit root_path
     click_on 'Professores'
     click_on 'Registrar um Professor'
 
-    fill_in 'Nome*', with: 'Abr'
-    fill_in 'E-mail*', with: 'abr@email.com'
+    fill_in 'Nome', with: 'Abr'
+    fill_in 'E-mail', with: 'abr@email.com'
     fill_in 'Descrição', with: 'História'
-    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'img.svg') #rspe de active storage recebendo img
+    attach_file 'Foto do Perfil', Rails.root.join('spec', 'fixtures', 'profile.jpeg') #rspe de active storage recebendo img
     click_on 'Cadastrar Professor'
 
-    expect(page).to have_content('E-mail já cadastrado!')    
+    expect(page).to have_content('E-mail já está em uso')    
   end
 
   it 'deletes a teacher' do
 
     Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
                    email: 'abr@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'})
 
     visit root_path
     click_on 'Professores'
     click_on 'Amanda'
-    click_on 'Excluir'
+
+    accept_alert do
+      click_on 'Excluir'
+    end
 
     expect(page).to_not have_content('Amanda')
 

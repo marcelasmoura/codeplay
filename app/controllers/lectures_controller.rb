@@ -44,6 +44,6 @@ class LecturesController < ApplicationController
 	end
 
 	def lecture_params
-		params.require(:lecture).permit(:issue, :description, :date)
+		params.require(:lecture).permit(:issue, :description, :date, support_materials:[])
 	end
 end

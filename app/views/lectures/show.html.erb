@@ -3,6 +3,16 @@
 <dl>
 	<dt>Descrição:</dt> <dd><%= @lecture.description %></dd>
 	<dt>Data da Aula:</dt> <dd><%= date_to_br(@lecture.date) %></dd>
+	<div>
+		<ul>
+			Anexos:
+			<% if  @lecture.support_materials.attached? %>
+				<% @lecture.support_materials.each do |material| %>
+					<li><%= link_to material.blob.filename, rails_blob_path(material, only_path: true), class: 'support_materials', target: '_blank' %></li>
+				<% end %>
+			<% end %>
+		</ul>
+	</div>
 </dl>
 
 <%= link_to 'Editar', edit_course_lecture_path(@course) %>

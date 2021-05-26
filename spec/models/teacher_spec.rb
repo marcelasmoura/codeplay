@@ -7,8 +7,8 @@ describe Teacher do
 
       teacher.valid?
 
-      expect(teacher.errors[:name]).to include('Você deve informar os campos obrigatórios')
-      expect(teacher.errors[:email]).to include('Você deve informar os campos obrigatórios')
+      expect(teacher.errors[:name]).to include('não pode ficar em branco')
+      expect(teacher.errors[:email]).to include('não pode ficar em branco')
     end
 
     it 'code must be uniq' do
@@ -18,7 +18,7 @@ describe Teacher do
 
       teacher.valid?
 
-      expect(teacher.errors[:email]).to include('E-mail já cadastrado!')
+      expect(teacher.errors[:email]).to include('já está em uso')
     end
 
     it 'should attach a profile picture' do
@@ -27,8 +27,8 @@ describe Teacher do
         email: 'jo@email.com',
         bio: 'Inspirado em Joana D\'arq',
         profile_picture: {
-          io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-          filename: 'img.svg'
+          io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+          filename: 'profile.jpeg'
         })
       
       expect(teacher.profile_picture).to be_attached

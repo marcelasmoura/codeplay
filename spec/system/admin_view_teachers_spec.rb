@@ -4,13 +4,13 @@ describe 'Admin view teachers' do
   it 'successfully' do
     Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
                    email: 'amanda@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'})
     Teacher.create!(name: 'Larissa',
                    bio: 'Matematica pra criancas',
                    email: 'larissa_mat@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'}) #importo uma imagem do caminho descrito entre ().
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'}) #importo uma imagem do caminho descrito entre ().
 
     visit root_path
     click_on 'Professores'
@@ -26,13 +26,13 @@ describe 'Admin view teachers' do
   it 'and view details' do
     Teacher.create!(name: 'Amanda', bio: 'Professora de Ingles',
                    email: 'amanda@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'})
     Teacher.create!(name: 'Larissa',
                    bio: 'Matematica pra criancas',
                    email: 'larissa_mat@email.com',
-                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'img.svg')),
-                    filename: 'img.svg'})
+                   profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
+                    filename: 'profile.jpeg'})
 
     visit root_path
     click_on 'Professores'
