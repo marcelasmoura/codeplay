@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <div class="menu-navegacao">
+      <nav>
+        <% if user_signed_in? %>
+          <%= current_user.email %>
+          <%= link_to("Sair", "#") %>
+        <% else %>
+          <%= link_to("Registrar-se", new_user_session_path) %>
+        <% end %>
+      </nav>
+    </div>
+
     <div class='container'>
       <%= flash[:alert] %>
       <%= yield %>
