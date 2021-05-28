@@ -9,16 +9,20 @@
 <% end %>
 
 <ul>
-	<li><%= @teacher.bio%></li>
-	<li><%= @teacher.email %></li>
-	<% if  @teacher.profile_picture.attached? %>
-	    <li><%= image_tag rails_representation_path(@teacher.profile_picture.variant(resize_to_limit: [80, 80]).processed, only_path: true), class: 'profile-picture' %></li>
-	<% end %>
+  <li><%= @teacher.bio%></li>
+  <% if user_signed_in? %>
+    <li><%= @teacher.email %></li>
+  <% end %>
+  <% if  @teacher.profile_picture.attached? %>
+    <li><%= image_tag rails_representation_path(@teacher.profile_picture.variant(resize_to_limit: [80, 80]).processed, only_path: true), class: 'profile-picture' %></li>
+  <% end %>
 </ul>
 
-<%= link_to("Editar", edit_teacher_path) %>
-<br>
-<%= link_to("Excluir", teacher_path(@teacher), data: {confirm: t('teachers.destroy.confirm')}, method: :delete) %>
+<% if user_signed_in? %>
+  <%= link_to("Editar", edit_teacher_path) %>
+  <br>
+  <%= link_to("Excluir", teacher_path(@teacher), data: {confirm: t('teachers.destroy.confirm')}, method: :delete) %>
+<% end %>
 <br>
 <%= link_to("Voltar", teachers_path) %>
 

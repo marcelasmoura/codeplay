@@ -38,6 +38,7 @@ Capybara.server = :puma
 Capybara.default_driver = :selenium_chrome_headless
 
 RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :system
   # config.before(type: :system) do
   #   driven_by :rack_test
   # end

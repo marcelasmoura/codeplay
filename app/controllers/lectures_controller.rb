@@ -1,4 +1,5 @@
 class LecturesController < ApplicationController
+	before_action :authenticate_user!, except:[:show]
 	before_action :set_course
 
 	def new

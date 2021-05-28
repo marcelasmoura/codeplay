@@ -20,6 +20,14 @@ describe 'Admin manages letures', js: true do
                     filename: 'test_document.pdf'}])
   end
 
+  let(:user) do
+    User.create!(email: 'a@email.com', password: 'thisisapassword')
+  end
+
+  before do
+    sign_in user
+  end
+
   it 'successfully' do
     visit root_path
     click_on 'Cursos'

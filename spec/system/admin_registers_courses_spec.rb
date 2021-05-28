@@ -9,6 +9,15 @@ describe 'Admin registers courses' do
                    profile_picture: {io: File.open(Rails.root.join('spec', 'fixtures', 'profile.jpeg')),
                    filename: 'profile.jpeg'})
   end
+
+  let(:user) do
+    User.create!(email: 'a@email.com', password: 'thisisapassword')
+  end
+
+  before do
+    sign_in user
+  end
+  
   it 'from index page' do
     visit root_path
     click_on 'Cursos'

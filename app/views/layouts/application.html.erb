@@ -14,15 +14,19 @@
       <nav>
         <% if user_signed_in? %>
           <%= current_user.email %>
-          <%= link_to("Sair", "#") %>
+          <%= link_to("Sair", destroy_user_session_path, method: :delete) %>
         <% else %>
-          <%= link_to("Registrar-se", new_user_session_path) %>
+          <%= link_to("Entrar", new_user_session_path) %>
         <% end %>
       </nav>
     </div>
 
     <div class='container'>
-      <%= flash[:alert] %>
+      <% flash.each do |type, msg| %>
+        <div class="flash-#{type}">
+          <%= msg %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

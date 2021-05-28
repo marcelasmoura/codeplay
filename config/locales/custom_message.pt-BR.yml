@@ -17,3 +17,11 @@ pt-BR:
       message: 'Nenhuma aula disponível!'
     destroy:
       confirm: 'Desseja realmente deletar essa aula?'
+
+  devise:
+    links:
+      sign_up: 'Criar Conta'
+      forgot_password: 'Esqueci minha senha'
+      log_in: 'Entrar'
+    buttons:
+      reset_password: 'Resetar minha senha'

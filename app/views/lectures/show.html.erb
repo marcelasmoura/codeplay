@@ -1,20 +1,24 @@
 <h3><%= @lecture.issue %></h3>
 
 <dl>
-	<dt>Descrição:</dt> <dd><%= @lecture.description %></dd>
-	<dt>Data da Aula:</dt> <dd><%= date_to_br(@lecture.date) %></dd>
-	<div>
-		<ul>
-			Anexos:
-			<% if  @lecture.support_materials.attached? %>
-				<% @lecture.support_materials.each do |material| %>
-					<li><%= link_to material.blob.filename, rails_blob_path(material, only_path: true), class: 'support_materials', target: '_blank' %></li>
-				<% end %>
-			<% end %>
-		</ul>
-	</div>
+  <dt>Data da Aula:</dt> <dd><%= date_to_br(@lecture.date) %></dd>
+  <% if user_signed_in? %>
+    <dt>Descrição:</dt> <dd><%= @lecture.description %></dd>
+    <div>
+      <ul>
+        Anexos:
+        <% if  @lecture.support_materials.attached? %>
+          <% @lecture.support_materials.each do |material| %>
+          <li><%= link_to material.blob.filename, rails_blob_path(material, only_path: true), class: 'support_materials', target: '_blank' %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </dl>
 
-<%= link_to 'Editar', edit_course_lecture_path(@course) %>
-<%= link_to 'Excluir', course_lecture_path(@course), data: {confirm: t('lectures.destroy.confirm')}, method: :delete %>
+<% if user_signed_in? %>
+  <%= link_to 'Editar', edit_course_lecture_path(@course) %>
+  <%= link_to 'Excluir', course_lecture_path(@course), data: {confirm: t('lectures.destroy.confirm')}, method: :delete %>
+<% end %>
 <%= link_to 'Voltar', course_path(@course) %>

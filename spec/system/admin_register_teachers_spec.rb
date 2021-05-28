@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe 'Admin registers teachers' do
+  let(:user) do
+    User.create!(email: 'a@email.com', password: 'thisisapassword')
+  end
+
+  before do
+    sign_in user
+  end
+  
   it 'from index page' do
     visit root_path
     click_on 'Professores'

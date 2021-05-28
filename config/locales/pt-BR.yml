@@ -19,6 +19,10 @@ pt-BR:
         issue: 'Assunto'
         description: 'Descrição'
         support_materials: 'Material de Apoio'
+      user:
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+        remember_me: 'Lembrar-me'
     models:
         lectures:
           one: 'Aula'
